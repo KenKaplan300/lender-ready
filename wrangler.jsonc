@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "lender-ready",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-27",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "lender-ready",
+    },
+  ],
+  "vars": {
+    "MAILCHIMP_SERVER": "us7",
+    "MAILCHIMP_AUDIENCE_ID": "5839947fe8",
+    // Same Supabase project as k2commercialfinance; safe to expose.
+    // SUPABASE_SERVICE_ROLE_KEY must be set separately as a secret:
+    // npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+    "NEXT_PUBLIC_SUPABASE_URL": "https://gzcjmlyyljokvzjdzita.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd6Y2ptbHl5bGpva3Z6amR6aXRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2NzMwMjQsImV4cCI6MjA4NjI0OTAyNH0.RncoYzUDI45_YGamhET7LnkKdvo-0VjoSkcbwIOnBhU",
+  },
+}
